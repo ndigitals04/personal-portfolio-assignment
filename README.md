@@ -2,7 +2,7 @@
 
 A one-page portfolio built with plain HTML + Tailwind CSS, themed around a
 code-editor / IDE look (window-chrome cards, mono labels).
-[Check it live here] (https://ndigitals04.github.io/personal-portfolio-assignment/)
+[Check it live here](https://ndigitals04.github.io/personal-portfolio-assignment/)
 
 ## Files
 
