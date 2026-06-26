@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Software Engineer</title>
+  <meta name="description" content="Portfolio of Your Name, a software engineer building reliable web applications end to end." />
+
+  <!-- Google Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (labels/code accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome, used for the footer social icons (LinkedIn / X / GitHub) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- COMPILED Tailwind stylesheet. This is the OUTPUT file: it is generated
+       from input.css + tailwind.config.js by running `npm run build`.
+       Never edit output.css directly -- edit input.css instead and rebuild. -->
+  <link rel="stylesheet" href="./css/output.css">
+</head>
+
+<body class="bg-bg text-ink font-body">
+
+  <!-- =====================================================================
+       NAVIGATION
+       position: sticky + top-0 keeps the bar pinned to the top of the
+       viewport once the page scrolls past it. backdrop-blur + a
+       semi-transparent background gives the "glass" effect while still
+       showing a hint of the page behind it.
+  ====================================================================== -->
+  <header class="sticky top-0 z-50 border-b border-edge bg-bg/80 backdrop-blur-md">
+    <nav class="container-content flex items-center justify-between py-4">
+
+      <!-- Logo / brand mark -->
+      <a href="#home" class="font-mono text-lg font-semibold text-ink">
+        <span class="text-accent">&lt;</span>YN<span class="text-accent">/&gt;</span>
+      </a>
+
+      <!-- Desktop links: hidden on small screens, shown from the md breakpoint up -->
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href="#home" class="nav-link">home</a></li>
+        <li><a href="#about" class="nav-link">about</a></li>
+        <li><a href="#skills" class="nav-link">skills</a></li>
+        <li><a href="#projects" class="nav-link">projects</a></li>
+        <li><a href="#contact" class="nav-link">contact</a></li>
+      </ul>
+
+      <!-- Resume button stays visible at all sizes -->
+      <a href="assets/resume.pdf" download="Your-Name-Resume.pdf"
+         class="hidden sm:inline-flex items-center gap-2 rounded-md border border-edge px-4 py-2
+                font-mono text-sm text-ink transition-colors hover:border-accent hover:text-accent">
+        <i class="fa-solid fa-arrow-down-to-line text-xs"></i> resume
+      </a>
+
+      <!-- Mobile menu toggle button: only visible below the md breakpoint -->
+      <button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+              class="md:hidden text-ink text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile dropdown menu: hidden by default, toggled via JS at the bottom of the page -->
+    <ul id="mobile-menu" class="hidden md:hidden flex-col gap-1 border-t border-edge bg-bg px-6 py-4">
+      <li><a href="#home" class="block py-2 nav-link">home</a></li>
+      <li><a href="#about" class="block py-2 nav-link">about</a></li>
+      <li><a href="#skills" class="block py-2 nav-link">skills</a></li>
+      <li><a href="#projects" class="block py-2 nav-link">projects</a></li>
+      <li><a href="#contact" class="block py-2 nav-link">contact</a></li>
+      <li><a href="assets/resume.pdf" download="Your-Name-Resume.pdf" class="block py-2 nav-link">download resume</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         HERO SECTION
+         Two-column layout: intro copy + CTAs on the left, photo framed as
+         an IDE-style window on the right. id="home" so the nav can jump here.
+    ====================================================================== -->
+    <section id="home" class="container-content grid md:grid-cols-2 gap-12 items-center py-20 md:py-28">
+
+      <!-- Left column: introduction -->
+      <div class="animate-fadeUp">
+        <p class="font-mono text-accent text-sm mb-4">
+          <span class="text-muted">$</span> whoami
+          <span class="inline-block w-2 h-4 bg-accent ml-1 align-middle animate-blink"></span>
+        </p>
+
+        <h1 class="font-display text-4xl sm:text-5xl font-semibold leading-tight mb-4">
+          Hi, I'm <span class="text-accent">Your Name</span>.<br/>
+          I build software that ships.
+        </h1>
+
+        <p class="text-muted text-lg leading-relaxed mb-8 max-w-md">
+          A software engineer who designs, builds, and ships full-stack products
+          &mdash; with an eye for clean architecture and an even cleaner UI.
+        </p>
+
+        <!-- Call-to-action buttons: jump to projects, or download the resume -->
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#projects" class="btn-primary">
+            <i class="fa-solid fa-code"></i> view my work
+          </a>
+
+          <!--
+            RESUME DOWNLOAD BUTTON
+            ---------------------------------------------------------------
+            `href` points at the PDF sitting in this project's /assets
+            folder. The `download` attribute tells the browser to save the
+            file to disk (with the given filename) instead of navigating
+            to it -- no JavaScript required, this is plain HTML behaviour.
+            If you rename or move the file, update the href to match.
+          -->
+          <a href="assets/resume.pdf" download="Your-Name-Resume.pdf" class="btn-outline">
+            <i class="fa-solid fa-file-arrow-down"></i> download resume
+          </a>
+        </div>
+      </div>
+
+      <!-- Right column: photo, framed like a code editor window -->
+      <div class="animate-fadeUp">
+        <div class="rounded-xl border border-edge bg-panel overflow-hidden shadow-2xl shadow-black/40 max-w-sm mx-auto">
+          <!-- Fake "window chrome" bar with traffic-light dots, ties into the dev theme -->
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">profile.jpg</span>
+          </div>
+          <!-- Swap assets/profile.svg for your real photo (jpg/png/webp) -->
+          <img src="assets/profile.svg" alt="Portrait of Your Name" class="w-full aspect-square object-cover">
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ABOUT SECTION
+    ====================================================================== -->
+    <section id="about" class="container-content py-20 border-t border-edge">
+      <div class="max-w-2xl">
+        <span class="section-tag">// about</span>
+        <h2 class="text-3xl font-semibold mb-6">A bit about how I work</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          I'm a software engineer with experience taking products from a rough idea
+          to something real people use in production. I care about the full
+          lifecycle of a feature &mdash; understanding the problem, sketching the
+          interface, writing code that's easy to maintain, and making sure it
+          actually ships without drama.
+        </p>
+        <p class="text-muted leading-relaxed">
+          Outside of client work, I contribute to open-source tooling and enjoy
+          mentoring engineers earlier in their careers. Replace this paragraph
+          with your own story, focus areas, and what you're currently learning.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SKILLS SECTION
+         A simple grid of skill categories rendered as mono "tag" pills.
+    ====================================================================== -->
+    <section id="skills" class="container-content py-20 border-t border-edge">
+      <span class="section-tag">// skills</span>
+      <h2 class="text-3xl font-semibold mb-10">Tools I reach for</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="rounded-xl border border-edge bg-panel p-6">
+          <i class="fa-solid fa-laptop-code text-accent mb-3 text-xl"></i>
+          <h3 class="font-display text-lg mb-3">Frontend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">Tailwind</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-edge bg-panel p-6">
+          <i class="fa-solid fa-server text-accent mb-3 text-xl"></i>
+          <h3 class="font-display text-lg mb-3">Backend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">Node.js</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-edge bg-panel p-6">
+          <i class="fa-solid fa-cloud text-accent mb-3 text-xl"></i>
+          <h3 class="font-display text-lg mb-3">Infrastructure</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">AWS</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">CI / CD</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-edge bg-panel p-6">
+          <i class="fa-solid fa-pen-ruler text-accent mb-3 text-xl"></i>
+          <h3 class="font-display text-lg mb-3">Product &amp; design</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">Figma</span>
+            <span class="tech-pill">UX writing</span>
+            <span class="tech-pill">Design systems</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROJECTS SECTION
+         4 project cards. Each card shows the project name/stack by default;
+         hovering (or tab-focusing, for keyboard users) reveals a
+         description panel covering the design -> build -> delivery story.
+         This is powered by the .project-card / .card-reveal classes
+         defined in input.css (group-hover style, but using a plain
+         CSS `:hover` + `:focus-within` selector so no extra JS is needed).
+    ====================================================================== -->
+    <section id="projects" class="container-content py-20 border-t border-edge">
+      <span class="section-tag">// projects</span>
+      <h2 class="text-3xl font-semibold mb-2">Selected work</h2>
+      <p class="text-muted mb-10 max-w-xl">
+        Hover a card (or tab to it) to see how each project moved from design,
+        through development, to delivery.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+
+        <!-- Project 1 -->
+        <article class="project-card h-72" tabindex="0">
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">ecommerce-platform.tsx</span>
+          </div>
+          <div class="flex-1 p-6 flex flex-col">
+            <h3 class="font-display text-xl mb-2">E-Commerce Platform Rebuild</h3>
+            <p class="text-muted text-sm mb-4">
+              A full storefront and checkout rebuild for a mid-size retailer.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="tech-pill">Next.js</span>
+              <span class="tech-pill">Node.js</span>
+              <span class="tech-pill">Stripe</span>
+            </div>
+          </div>
+
+          <!-- Hover/focus reveal: design -> build -> delivery narrative -->
+          <div class="card-reveal">
+            <h4 class="font-mono text-xs uppercase text-accent tracking-wide">how it was built</h4>
+            <p class="text-sm text-muted leading-relaxed">
+              <span class="text-ink">Design:</span> ran two discovery workshops with the
+              retailer, then wireframed and prototyped the new checkout flow in Figma,
+              user-testing it with five shoppers before writing a line of code.
+              <span class="text-ink"> Build:</span> implemented the storefront in
+              Next.js with a Node/PostgreSQL backend, integrating Stripe for payments
+              and adding automated tests around checkout edge cases.
+              <span class="text-ink"> Delivery:</span> shipped behind a feature flag,
+              rolled out gradually, and monitored conversion metrics post-launch &mdash;
+              cart abandonment dropped 18%.
+            </p>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card h-72" tabindex="0">
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">analytics-dashboard.tsx</span>
+          </div>
+          <div class="flex-1 p-6 flex flex-col">
+            <h3 class="font-display text-xl mb-2">Real-Time Analytics Dashboard</h3>
+            <p class="text-muted text-sm mb-4">
+              A live operations dashboard streaming metrics over WebSockets.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="tech-pill">React</span>
+              <span class="tech-pill">D3.js</span>
+              <span class="tech-pill">WebSockets</span>
+            </div>
+          </div>
+
+          <div class="card-reveal">
+            <h4 class="font-mono text-xs uppercase text-accent tracking-wide">how it was built</h4>
+            <p class="text-sm text-muted leading-relaxed">
+              <span class="text-ink">Design:</span> shadowed the ops team for a day to
+              learn which numbers they actually glance at under pressure, then sketched
+              a low-clutter dashboard layout reviewed with three on-call engineers.
+              <span class="text-ink"> Build:</span> built custom D3 charts inside a React
+              shell, with a WebSocket layer streaming live metrics and a fallback to
+              polling when sockets drop.
+              <span class="text-ink"> Delivery:</span> deployed to a staging environment
+              for a two-week soak test before going live to the full ops team.
+            </p>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card h-72" tabindex="0">
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">api-gateway.go</span>
+          </div>
+          <div class="flex-1 p-6 flex flex-col">
+            <h3 class="font-display text-xl mb-2">Banking API Gateway</h3>
+            <p class="text-muted text-sm mb-4">
+              A secure microservice gateway fronting a banking app's internal APIs.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="tech-pill">Go</span>
+              <span class="tech-pill">Docker</span>
+              <span class="tech-pill">OAuth2</span>
+            </div>
+          </div>
+
+          <div class="card-reveal">
+            <h4 class="font-mono text-xs uppercase text-accent tracking-wide">how it was built</h4>
+            <p class="text-sm text-muted leading-relaxed">
+              <span class="text-ink">Design:</span> mapped every internal service the
+              gateway would front, then drafted an authentication and rate-limiting
+              spec reviewed in a security audit before implementation began.
+              <span class="text-ink"> Build:</span> wrote the gateway in Go for
+              throughput, containerised it with Docker, and added OAuth2-based service
+              auth with per-client rate limits.
+              <span class="text-ink"> Delivery:</span> rolled out region by region with
+              real-time alerting, catching one mis-configured rate limit before it
+              affected customers.
+            </p>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card h-72" tabindex="0">
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">devkit-cli.rs</span>
+          </div>
+          <div class="flex-1 p-6 flex flex-col">
+            <h3 class="font-display text-xl mb-2">Open-Source CLI Tool</h3>
+            <p class="text-muted text-sm mb-4">
+              A developer CLI for scaffolding and linting internal services.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="tech-pill">Rust</span>
+              <span class="tech-pill">Open Source</span>
+              <span class="tech-pill">DX</span>
+            </div>
+          </div>
+
+          <div class="card-reveal">
+            <h4 class="font-mono text-xs uppercase text-accent tracking-wide">how it was built</h4>
+            <p class="text-sm text-muted leading-relaxed">
+              <span class="text-ink">Design:</span> collected pain points from internal
+              engineers via a short survey, then designed the command structure around
+              the three tasks they repeated most often.
+              <span class="text-ink"> Build:</span> built the CLI in Rust for fast
+              startup time, with unit tests for every command and generated docs
+              published alongside each release.
+              <span class="text-ink"> Delivery:</span> open-sourced it, set up GitHub
+              Actions for automated releases, and it's now used by several teams beyond
+              the original one.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONTACT SECTION
+    ====================================================================== -->
+    <section id="contact" class="container-content py-20 border-t border-edge">
+      <div class="rounded-2xl border border-edge bg-panel px-8 py-14 text-center">
+        <span class="section-tag">// contact</span>
+        <h2 class="text-3xl font-semibold mb-4">Let's build something together</h2>
+        <p class="text-muted max-w-md mx-auto mb-8">
+          Open to new roles and freelance projects. The fastest way to reach me
+          is email.
+        </p>
+        <a href="mailto:you@email.com" class="btn-primary">
+          <i class="fa-solid fa-envelope"></i> you@email.com
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       Social links to LinkedIn, X (Twitter) and GitHub, using Font Awesome
+       brand icons. Update the href values to point at your real profiles.
+  ====================================================================== -->
+  <footer class="border-t border-edge">
+    <div class="container-content py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+
+      <p class="font-mono text-xs text-muted">
+        © <span id="year"></span> Your Name. Built with HTML &amp; Tailwind CSS.
+      </p>
+
+      <div class="flex items-center gap-3">
+        <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer"
+           aria-label="LinkedIn profile" class="social-icon">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/yourname" target="_blank" rel="noopener noreferrer"
+           aria-label="X (Twitter) profile" class="social-icon">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer"
+           aria-label="GitHub profile" class="social-icon">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       JAVASCRIPT
+       Small, vanilla JS for two things only:
+         1. Toggling the mobile nav menu open/closed.
+         2. Writing the current year into the footer automatically.
+       Everything else (smooth scroll, hover reveals, the resume download)
+       is handled by plain HTML/CSS -- no framework needed for a one-pager.
+  ====================================================================== -->
+  <script>
+    // Grab the toggle button and the mobile menu it controls
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      // Flip the menu between hidden/visible
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+
+      // Keep the button's accessible state in sync with the menu state
+      menuToggle.setAttribute('aria-expanded', String(isHidden));
+    });
+
+    // Close the mobile menu automatically once a link inside it is clicked
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Auto-fill the footer's copyright year so it never goes stale
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

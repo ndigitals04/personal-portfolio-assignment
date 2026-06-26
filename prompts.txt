@@ -1,0 +1,19 @@
+What's up Claude. I need you to help me build my portfolio website.
+
+It will be a one page portfolio. The header will link to the various sections of the site.
+
+My Photo and introduction should be in the hero section alongside an option to download my resume. Make the download function by getting the the file from the same folder of the project and making it download upon click by user.
+
+
+
+Add comments in every step of what each code is doing. Ensure there is a project section with at least 4 project cards. Each project card should have  description of what the project entails and how it was developed from design to coding then delivery. if the description could show on hover, that would be lovely.
+
+
+
+There should be a footer with social media links to linkedin, x and github. the icons should be of fontawesome type.
+
+
+
+Ensure the menu is sticky at the top.
+
+I am a professional software engineer. So make it look professional in structure and use of colors.

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peter Ndukwe — Software Engineer</title>
+  <meta name="description" content="Peter Ndukwe, a software engineer building reliable web applications end to end." />
+
+  <!-- Google Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (labels/code accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome, used for the footer social icons (LinkedIn / X / GitHub) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- COMPILED Tailwind stylesheet. This is the OUTPUT file: it is generated
+       from input.css + tailwind.config.js by running `npm run build`.
+       Never edit output.css directly -- edit input.css instead and rebuild. -->
+  <link rel="stylesheet" href="./css/output.css">
+</head>
+
+<body class="bg-bg text-ink font-body">
+
+  <!-- =====================================================================
+       NAVIGATION
+       position: sticky + top-0 keeps the bar pinned to the top of the
+       viewport once the page scrolls past it. backdrop-blur + a
+       semi-transparent background gives the "glass" effect while still
+       showing a hint of the page behind it.
+  ====================================================================== -->
+  <header class="sticky top-0 z-50 border-b border-edge bg-bg/80 backdrop-blur-md">
+    <nav class="container-content flex items-center justify-between py-4">
+
+      <!-- Logo / brand mark -->
+      <a href="#home" class="font-mono text-lg font-semibold text-ink">
+        <span class="text-accent">&lt;</span>Peter Ndukwe<span class="text-accent">/&gt;</span>
+      </a>
+
+      <!-- Desktop links: hidden on small screens, shown from the md breakpoint up -->
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Resume button stays visible at all sizes -->
+      <a href="Peter-Ndukwe-Backend-Developer-Resume.pdf" download="Peter-Ndukwe-Resume.pdf"
+         class="hidden sm:inline-flex items-center gap-2 rounded-md border border-edge px-4 py-2
+                font-mono text-sm text-ink transition-colors hover:border-accent hover:text-accent">
+        <i class="fa-solid fa-file-arrow-down"></i> Resume
+      </a>
+      <!-- Mobile menu toggle button: only visible below the md breakpoint -->
+      <button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+              class="md:hidden text-ink text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile dropdown menu: hidden by default, toggled via JS at the bottom of the page -->
+    <ul id="mobile-menu" class="hidden md:hidden flex-col gap-1 border-t border-edge bg-bg px-6 py-4">
+      <li><a href="#home" class="block py-2 nav-link">Home</a></li>
+      <li><a href="#about" class="block py-2 nav-link">About</a></li>
+      <li><a href="#skills" class="block py-2 nav-link">Skills</a></li>
+      <li><a href="#projects" class="block py-2 nav-link">Projects</a></li>
+      <li><a href="#contact" class="block py-2 nav-link">Contact</a></li>
+      <li><a href="assets/resume.pdf" download="Your-Name-Resume.pdf" class="block py-2 nav-link">Download resume</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         HERO SECTION
+         Two-column layout: intro copy + CTAs on the left, photo framed as
+         an IDE-style window on the right. id="home" so the nav can jump here.
+    ====================================================================== -->
+    <section id="home" class="container-content grid md:grid-cols-2 gap-12 items-center py-20 md:py-28">
+
+      <!-- Left column: introduction -->
+      <div class="animate-fadeUp">
+        <p class="font-mono text-accent text-sm mb-4">
+          <span class="text-muted">$</span> whoami
+          <span class="inline-block w-2 h-4 bg-accent ml-1 align-middle animate-blink"></span>
+        </p>
+
+        <h1 class="font-display text-4xl sm:text-5xl font-semibold leading-tight mb-4">
+          Hi, I'm <span class="text-accent">Peter Ndukwe</span>.<br/>
+          I build softwares that solve problems.
+        </h1>
+
+        <p class="text-muted text-lg leading-relaxed mb-8 max-w-md">
+          A software engineer who designs, architects, builds, and deliver full-stack products
+          with a touch of AI integration and user acceptable UI.
+        </p>
+
+        <!-- Call-to-action buttons: jump to projects, or download the resume -->
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#projects" class="btn-primary">
+            <i class="fa-solid fa-code"></i> View my work
+          </a>
+
+          <!--
+            RESUME DOWNLOAD BUTTON
+            ---------------------------------------------------------------
+            `href` points at the PDF sitting in this project's /assets
+            folder. The `download` attribute tells the browser to save the
+            file to disk (with the given filename) instead of navigating
+            to it -- no JavaScript required, this is plain HTML behaviour.
+            If you rename or move the file, update the href to match.
+          -->
+          <a href="Peter-Ndukwe-Backend-Developer-Resume.pdf" download="Peter-Ndukwe-Resume.pdf" class="btn-outline">
+            <i class="fa-solid fa-file-arrow-down"></i> Download resume
+          </a>
+        </div>
+      </div>
+
+      <!-- Right column: photo, framed like a code editor window -->
+      <div class="animate-fadeUp">
+        <div class="rounded-xl border border-edge bg-panel overflow-hidden shadow-2xl shadow-black/40 max-w-sm mx-auto">
+          <!-- Fake "window chrome" bar with traffic-light dots, ties into the dev theme -->
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">dev.jpg</span>
+          </div>
+          <!-- Swap assets/profile.svg for your real photo (jpg/png/webp) -->
+          <img src="images/passport.jpg" alt="Portrait of Peter Ndukwe" class="w-full aspect-square object-cover">
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ABOUT SECTION
+    ====================================================================== -->
+    <section id="about" class="container-content py-20 border-t border-edge">
+      <div class="max-w-2xl">
+        <span class="section-tag">// about</span>
+        <h2 class="text-3xl font-semibold mb-6">How I build</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          I'm a software engineer with experience building real world products that solve problems for everyday individuals and businesses. I cherish the process i put into developing architectures for softwares that stand the test of time.
+        </p>
+        <p class="text-muted leading-relaxed">
+          Outside of Engineering, I am a Leader and love engaging in discussions and projects that contributes to the development of society.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SKILLS SECTION
+         A simple grid of skill categories rendered as mono "tag" pills.
+    ====================================================================== -->
+    <section id="skills" class="container-content py-20 border-t border-edge">
+      <span class="section-tag">// skills</span>
+      <h2 class="text-3xl font-semibold mb-10">Tools I work with</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="rounded-xl border border-edge bg-panel p-6">
+          <i class="fa-solid fa-laptop-code text-accent mb-3 text-xl"></i>
+          <h3 class="font-display text-lg mb-3">Frontend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">HTML</span>
+            <span class="tech-pill">CSS</span>
+            <span class="tech-pill">Tailwind</span>
+            <span class="tech-pill">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-edge bg-panel p-6">
+          <i class="fa-solid fa-server text-accent mb-3 text-xl"></i>
+          <h3 class="font-display text-lg mb-3">Backend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">Node.js</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Django</span>
+            <span class="tech-pill">PostgreSQL</span>
+            <span class="tech-pill">MySQL</span>
+            <span class="tech-pill">Flask</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-edge bg-panel p-6">
+          <i class="fa-solid fa-cloud text-accent mb-3 text-xl"></i>
+          <h3 class="font-display text-lg mb-3">Infrastructure</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">AWS</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">CI / CD</span>
+            <span class="tech-pill">Railway</span>
+            <span class="tech-pill">Redis</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-edge bg-panel p-6">
+         <i class="fa-solid fa-brain text-accent mb-3 text-xl"></i>
+          <h3 class="font-display text-lg mb-3">AI</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">Jupyter</span>
+            <span class="tech-pill">Claude</span>
+            <span class="tech-pill">Codex</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROJECTS SECTION
+         4 project cards. Each card shows the project name/stack by default;
+         hovering (or tab-focusing, for keyboard users) reveals a
+         description panel covering the design -> build -> delivery story.
+         This is powered by the .project-card / .card-reveal classes
+         defined in input.css (group-hover style, but using a plain
+         CSS `:hover` + `:focus-within` selector so no extra JS is needed).
+    ====================================================================== -->
+    <section id="projects" class="container-content py-20 border-t border-edge">
+      <span class="section-tag">// projects</span>
+      <h2 class="text-3xl font-semibold mb-2"> A few of my works</h2>
+      <p class="text-muted mb-10 max-w-xl">
+        Check out my recent projects.
+        Hover each card or tap on it to see how each project moved from design,
+        through development, and to delivery.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+
+        <!-- Project 1 -->
+        <article class="project-card h-72" tabindex="0">
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">mamaputonline.css</span>
+          </div>
+          <div class="flex-1 p-6 flex flex-col">
+            <h3 class="font-display text-xl mb-2">MamaPutOnline Online Restaurant</h3>
+            <p class="text-muted text-sm mb-4">
+              An online delivery restaurant for your favourite mamaput joint.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="tech-pill">HTML</span>
+              <span class="tech-pill">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <!-- Hover/focus reveal: design -> build -> delivery narrative -->
+          <div class="card-reveal">
+            <h4 class="font-mono text-xs uppercase text-accent tracking-wide">how it was built</h4>
+            <p class="text-sm text-muted leading-relaxed">
+              <span class="text-ink">Design:</span> spent a morning at the kitchen to see how orders actually flowed during rush hour, then designed a mobile-first menu and ordering screen that loads fast on low data .
+              <span class="text-ink"> Build:</span> built the storefront in html and css and a bit of JS to handle mobile menu
+              <span class="text-ink"> Delivery:</span> prepped it for deployment via GitHub
+            </p>
+            <div class="flex items-center gap-3">
+              <a href="https://github.com/ndigitals04/mamaputonline" target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub profile" class="social-icon">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a class="flex items-center gap-2" href="https://ndigitals04.github.io/mamaputonline/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                <div class="social-icon">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card h-72" tabindex="0">
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">Nexus.js</span>
+          </div>
+          <div class="flex-1 p-6 flex flex-col">
+            <h3 class="font-display text-xl mb-2">Nexus Company Website</h3>
+            <p class="text-muted text-sm mb-4">
+              A static landing page for Nexus IT solutions providers.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="tech-pill">HTML</span>
+              <span class="tech-pill">TAILWIND CSS</span>
+            </div>
+          </div>
+
+          <div class="card-reveal">
+            <h4 class="font-mono text-xs uppercase text-accent tracking-wide">how it was built</h4>
+            <p class="text-sm text-muted leading-relaxed">
+              <span class="text-ink">Design:</span> UI was provided by Turing Tech Trainers.
+              <span class="text-ink"> Build:</span> Took time to stuy tailwind properly and built as pixel perfect as possible the provided interface.
+              <span class="text-ink"> Delivery:</span> deployed via GitHub pages.
+            </p>
+            <div class="flex items-center gap-3">
+              <a href="https://github.com/ndigitals04/peter_ndukwe_nexus_website" target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub profile" class="social-icon">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a class="flex items-center gap-2" href="https://ndigitals04.github.io/peter_ndukwe_nexus_website/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                <div class="social-icon">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card h-72" tabindex="0">
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">pnp-electronics.html</span>
+          </div>
+          <div class="flex-1 p-6 flex flex-col">
+            <h3 class="font-display text-xl mb-2">PNP Electronics Ecommerce store</h3>
+            <p class="text-muted text-sm mb-4">
+              An ecommerce store for all kinds of electronic gadgedts and accessories.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="tech-pill">HTML</span>
+              <span class="tech-pill">CSS</span>
+              <span class="tech-pill">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="card-reveal">
+            <h4 class="font-mono text-xs uppercase text-accent tracking-wide">how it was built</h4>
+            <p class="text-sm text-muted leading-relaxed">
+              <span class="text-ink">Design:</span> a group project from Turing Tech.
+              <span class="text-ink"> Build:</span>Spent time in back to meetings with team members to plan how we'll go about the build. About and contact page were assigned to me..
+              <span class="text-ink"> Delivery:</span> I compiled the project from all group members and prepared for deployment via GitHub.
+            </p>
+
+            <div class="flex items-center gap-3">
+              <a href="https://github.com/frankson12000/group16-project-e-commerce" target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub profile" class="social-icon">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a class="flex items-center gap-2" href="https://frankson12000.github.io/group16-project-e-commerce/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                <div class="social-icon">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card h-72" tabindex="0">
+          <div class="window-bar">
+            <span class="window-dot bg-dot-red"></span>
+            <span class="window-dot bg-dot-yellow"></span>
+            <span class="window-dot bg-dot-green"></span>
+            <span class="ml-2 font-mono text-xs text-muted">portfolio.css</span>
+          </div>
+          <div class="flex-1 p-6 flex flex-col">
+            <h3 class="font-display text-xl mb-2">Initial Portfolio Website</h3>
+            <p class="text-muted text-sm mb-4">
+              My previously built portfolio website.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <span class="tech-pill">HTML</span>
+              <span class="tech-pill">CSS</span>
+              <span class="tech-pill">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="card-reveal">
+            <h4 class="font-mono text-xs uppercase text-accent tracking-wide">how it was built</h4>
+            <p class="text-sm text-muted leading-relaxed">
+              <span class="text-ink">Design:</span> First took inspiration from a couple of sites and that's where i got the changing theme idea.
+              <span class="text-ink"> Build:</span> built the html structure and then went into styling with css. Added JS for the mobile menu and to update the date the portfolio was last modified.
+              <span class="text-ink"> Delivery:</span> Deployed with GitHub pages and shared online for review.
+            </p>
+
+            <div class="flex items-center gap-3">
+              <a href="https://github.com/ndigitals04/peterndukwe_portfolio" target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub profile" class="social-icon">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a class="flex items-center gap-2" href="https://ndigitals04.github.io/peterndukwe_portfolio/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                <div class="social-icon">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONTACT SECTION
+    ====================================================================== -->
+    <section id="contact" class="container-content py-20 border-t border-edge">
+      <div class="rounded-2xl border border-edge bg-panel px-8 py-14 text-center">
+        <span class="section-tag">// contact</span>
+        <h2 class="text-3xl font-semibold mb-4">Let's bring that idea of yours to life🤞🏽</h2>
+        <p class="text-muted max-w-md mx-auto mb-8">
+          Open to new engineering roles, open source and freelance projects. Reache me via email.
+        </p>
+        <a href="mailto:ndigitals001@gmail.com" class="btn-primary">
+          <i class="fa-solid fa-envelope"></i> ndigitals001@gmail.com
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       Social links to LinkedIn, X (Twitter) and GitHub, using Font Awesome
+       brand icons. Update the href values to point at your real profiles.
+  ====================================================================== -->
+  <footer class="border-t border-edge">
+    <div class="container-content py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+
+      <p class="font-mono text-xs text-muted">
+        © <span id="year"></span> Peter Ndukwe. Built with HTML &amp; Tailwind CSS.
+      </p>
+
+      <div class="flex items-center gap-3">
+        <a href="https://linkedin.com/in/peter--ndukwe" target="_blank" rel="noopener noreferrer"
+           aria-label="LinkedIn profile" class="social-icon">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/ndigitals001" target="_blank" rel="noopener noreferrer"
+           aria-label="X (Twitter) profile" class="social-icon">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://github.com/ndigitals04" target="_blank" rel="noopener noreferrer"
+           aria-label="GitHub profile" class="social-icon">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       JAVASCRIPT
+       Small, vanilla JS for two things only:
+         1. Toggling the mobile nav menu open/closed.
+         2. Writing the current year into the footer automatically.
+       Everything else (smooth scroll, hover reveals, the resume download)
+       is handled by plain HTML/CSS -- no framework needed for a one-pager.
+  ====================================================================== -->
+  <script>
+    // Grab the toggle button and the mobile menu it controls
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      // Flip the menu between hidden/visible
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+
+      // Keep the button's accessible state in sync with the menu state
+      menuToggle.setAttribute('aria-expanded', String(isHidden));
+    });
+
+    // Close the mobile menu automatically once a link inside it is clicked
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Auto-fill the footer's copyright year so it never goes stale
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
