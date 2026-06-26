@@ -2,6 +2,8 @@
 
 A one-page portfolio built with plain HTML + Tailwind CSS, themed around a
 code-editor / IDE look (window-chrome cards, mono labels).
+[Check it live here] (https://ndigitals04.github.io/personal-portfolio-assignment/)
+
 ## Files
 
 ```
@@ -13,7 +15,7 @@ package.json         npm scripts to build output.css
 ```
 
 
-## How to rebuild output.css (after you change styles)
+## How to rebuild output.css
 
 `output.css` only needs to be regenerated if you add **new** Tailwind
 classes to `index.html` or change `input.css` / `tailwind.config.js`.
